@@ -13,6 +13,7 @@ export class AppComponent {
 
   topics = ['sladoled', 'cokolada', 'chips'];
   topicHasError = true;
+  submitted = false;
 
   userModel = new User('', 'rob@test.com', 5698552, 'default', 'morning', true)
 
@@ -21,7 +22,8 @@ export class AppComponent {
   }
 
   onSubmit() {
-    this._shaService.enroll(this.userModel).subscribe( data => 
+    this.submitted = true;
+    this._shaService.enroll(this.userModel).subscribe( 
       data => console.log('Success!', data),
       error => console.log('Error!', error)
       
