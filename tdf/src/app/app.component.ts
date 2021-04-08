@@ -24,6 +24,7 @@ export class AppComponent {
     this._shaService.enroll(this.userModel).subscribe( data => 
       data => console.log('Success!', data),
       error => console.log('Error!', error)
+      
     )
   }
 }
