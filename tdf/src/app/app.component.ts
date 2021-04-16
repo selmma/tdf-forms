@@ -14,19 +14,21 @@ export class AppComponent {
   topics = ['sladoled', 'cokolada', 'chips'];
   topicHasError = true;
   submitted = false;
+  errorMsg = '';
 
-  userModel = new User('', 'rob@test.com', 5698552, 'default', 'morning', true)
+
+  userModel = new User('sha', 'rob@test.com', 5698555692, 'default', 'morning', true)
 
   validateTopic(value){
     value === 'default' ? this.topicHasError = true : this.topicHasError = false;
   }
 
-  onSubmit() {
-    this.submitted = true;
-    this._shaService.enroll(this.userModel).subscribe( 
-      data => console.log('Success!', data),
-      error => console.log('Error!', error)
-      
-    )
+  onSubmit(userForm) {
+    console.log(userForm);
+    // this.submitted = true;
+    // this._shaService.enroll(this.userModel).subscribe( 
+    //   data => console.log('Success!', data),
+    //   error => this.errorMsg = error.statusText
+    // )
   }
 }

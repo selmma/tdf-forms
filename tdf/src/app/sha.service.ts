@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { User } from './user';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +15,10 @@ export class ShaService {
 
   enroll(user: User){
     return this._htpp.post<any>(this._url, user)
+           .pipe(catchError(this.errorHandler))
   }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error);
+  } 
 }
